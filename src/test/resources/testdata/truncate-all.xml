@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+	<!-- Truncates tables starting from the bottom up -->
+	<SA_USER />
+	<CLUB />
+	<PLAYER />
+	<PLAYER_CLUB_LINK />
+	<TEAM />
+	<MATCH />
+	<TEAM_MATCH_STATS />
+	<PLAYER_MATCH_STATS />
+	<STATS />
+	<PLAYER_MATCH_STATS_LINK />
+
+</dataset>
