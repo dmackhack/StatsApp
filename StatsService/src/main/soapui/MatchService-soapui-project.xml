@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="MatchService" soapui-version="3.6.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="MatchServiceEndpointServiceSoapBinding" type="wsdl" bindingName="{http://services.statsapp.dmack.org/}MatchServiceEndpointServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/statsapp/services/matchservice?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/statsapp/services/matchservice?wsdl"><con:part><con:url>http://localhost:8080/statsapp/services/matchservice?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MatchServiceEndpointService" targetNamespace="http://services.statsapp.dmack.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.statsapp.dmack.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://services.statsapp.dmack.org/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="add" type="tns:add"/>
+      <xs:element name="addResponse" type="tns:addResponse"/>
+      <xs:element name="createAddress" type="tns:createAddress"/>
+      <xs:element name="createAddressResponse" type="tns:createAddressResponse"/>
+      <xs:element name="createMatch" type="tns:createMatch"/>
+      <xs:element name="createMatchResponse" type="tns:createMatchResponse"/>
+      <xs:element name="getCity" type="tns:getCity"/>
+      <xs:element name="getCityResponse" type="tns:getCityResponse"/>
+      <xs:element name="getMatch" type="tns:getMatch"/>
+      <xs:element name="getMatchResponse" type="tns:getMatchResponse"/>
+      <xs:complexType name="createMatch">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createMatchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:match"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="match">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="awayTeamMatchStatistics" type="tns:teamMatchStatistics"/>
+              <xs:element minOccurs="0" name="date" type="xs:dateTime"/>
+              <xs:element minOccurs="0" name="homeTeamMatchStatistics" type="tns:teamMatchStatistics"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType abstract="true" name="domainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="version" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="teamMatchStatistics">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="playerMatchStatistics" nillable="true" type="tns:playerMatchStatistics"/>
+              <xs:element minOccurs="0" name="team" type="tns:team"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="playerMatchStatistics">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="player" type="tns:player"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="statistics" nillable="true" type="tns:statistics"/>
+              <xs:element minOccurs="0" name="teamMatchStatistics" type="tns:teamMatchStatistics"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="player">
+        <xs:complexContent>
+          <xs:extension base="tns:user">
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="clubs" nillable="true" type="tns:club"/>
+              <xs:element minOccurs="0" name="currentClub" type="tns:club"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="playerMatchStatics" nillable="true" type="tns:playerMatchStatistics"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="user">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="username" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="club">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="name" type="xs:string"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="players" nillable="true" type="tns:player"/>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="teams" nillable="true" type="tns:team"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="team">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="club" type="tns:club"/>
+              <xs:element minOccurs="0" name="type" type="tns:teamType"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="statistics">
+        <xs:complexContent>
+          <xs:extension base="tns:domainObject">
+            <xs:sequence>
+              <xs:element name="behinds" type="xs:int"/>
+              <xs:element name="goals" type="xs:int"/>
+              <xs:element name="handballs" type="xs:int"/>
+              <xs:element name="kicks" type="xs:int"/>
+              <xs:element name="marks" type="xs:int"/>
+              <xs:element name="quarter" type="xs:int"/>
+              <xs:element name="tackles" type="xs:int"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="getCity">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getCityResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:city"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="city">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" nillable="true" type="tns:usAddress"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="usAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getMatch">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getMatchResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:match"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="add">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:int"/>
+          <xs:element name="arg1" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createAddressResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:usAddress"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="teamType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SENIORS"/>
+          <xs:enumeration value="RESERVES"/>
+          <xs:enumeration value="THIRDS"/>
+          <xs:enumeration value="FOURTHS"/>
+          <xs:enumeration value="U19s"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createAddressResponse">
+    <wsdl:part element="tns:createAddressResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createAddress">
+    <wsdl:part element="tns:createAddress" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createMatchResponse">
+    <wsdl:part element="tns:createMatchResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createMatch">
+    <wsdl:part element="tns:createMatch" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addResponse">
+    <wsdl:part element="tns:addResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMatch">
+    <wsdl:part element="tns:getMatch" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMatchResponse">
+    <wsdl:part element="tns:getMatchResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCity">
+    <wsdl:part element="tns:getCity" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="add">
+    <wsdl:part element="tns:add" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCityResponse">
+    <wsdl:part element="tns:getCityResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MatchService">
+    <wsdl:operation name="createMatch">
+      <wsdl:input message="tns:createMatch" name="createMatch"></wsdl:input>
+      <wsdl:output message="tns:createMatchResponse" name="createMatchResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCity">
+      <wsdl:input message="tns:getCity" name="getCity"></wsdl:input>
+      <wsdl:output message="tns:getCityResponse" name="getCityResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMatch">
+      <wsdl:input message="tns:getMatch" name="getMatch"></wsdl:input>
+      <wsdl:output message="tns:getMatchResponse" name="getMatchResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <wsdl:input message="tns:add" name="add"></wsdl:input>
+      <wsdl:output message="tns:addResponse" name="addResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAddress">
+      <wsdl:input message="tns:createAddress" name="createAddress"></wsdl:input>
+      <wsdl:output message="tns:createAddressResponse" name="createAddressResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MatchServiceEndpointServiceSoapBinding" type="tns:MatchService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createMatch">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createMatch">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createMatchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMatch">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMatch">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMatchResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="add">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAddress">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createAddress">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MatchServiceEndpointService">
+    <wsdl:port binding="tns:MatchServiceEndpointServiceSoapBinding" name="MatchServiceEndpointPort">
+      <soap:address location="http://localhost:8080/statsapp/services/matchservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="add" bindingOperationName="add" type="Request-Response" outputName="addResponse" inputName="add" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.statsapp.dmack.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:add>
+         <arg0>2</arg0>
+         <arg1>3</arg1>
+      </ser:add>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.statsapp.dmack.org/MatchService/add"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createAddress" bindingOperationName="createAddress" type="Request-Response" outputName="createAddressResponse" inputName="createAddress" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.statsapp.dmack.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:createAddress>
+         </ser:createAddress>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.statsapp.dmack.org/MatchService/createAddress"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createMatch" bindingOperationName="createMatch" type="Request-Response" outputName="createMatchResponse" inputName="createMatch" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.statsapp.dmack.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:createMatch>
+         </ser:createMatch>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.statsapp.dmack.org/MatchService/createMatch"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCity" bindingOperationName="getCity" type="Request-Response" outputName="getCityResponse" inputName="getCity" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.statsapp.dmack.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getCity/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.statsapp.dmack.org/MatchService/getCity"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getMatch" bindingOperationName="getMatch" type="Request-Response" outputName="getMatchResponse" inputName="getMatch" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/statsapp/services/matchservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.statsapp.dmack.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getMatch>
+         <!--Optional:-->
+         <arg0>1</arg0>
+      </ser:getMatch>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.statsapp.dmack.org/MatchService/getMatch"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
