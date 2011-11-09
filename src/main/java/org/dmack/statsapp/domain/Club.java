@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "CLUB", uniqueConstraints =
@@ -23,11 +24,11 @@ import javax.persistence.UniqueConstraint;
     })
 public class Club extends DomainObject
 {
-    public String name;
+    private String name;
 
-    public Set<Player> players = new LinkedHashSet<Player>();
+    private Set<Player> players = new LinkedHashSet<Player>();
 
-    public Set<Team> teams = new LinkedHashSet<Team>();
+    private Set<Team> teams = new LinkedHashSet<Team>();
 
     @Basic
     @Column(name = "NAME")
@@ -41,6 +42,7 @@ public class Club extends DomainObject
         this.name = aName;
     }
 
+    @XmlTransient
     @ManyToMany(mappedBy = "clubs", fetch = FetchType.LAZY)
     public Set<Player> getPlayers()
     {
@@ -52,6 +54,7 @@ public class Club extends DomainObject
         this.players = aPlayers;
     }
 
+    @XmlTransient
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Set<Team> getTeams()
     {

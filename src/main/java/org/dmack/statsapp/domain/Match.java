@@ -8,15 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "MATCH")
 public class Match extends DomainObject
 {
     private Date date;
-    
+
+    // private User user;
+
     private TeamMatchStatistics homeTeamMatchStatistics;
-    
+
     private TeamMatchStatistics awayTeamMatchStatistics;
 
     @OneToOne(mappedBy = "match", fetch = FetchType.LAZY)
@@ -52,5 +55,22 @@ public class Match extends DomainObject
     {
         this.date = aDate;
     }
-    
+
+    @Transient
+    public void createMatch(Date date, Team homeTeam, Team awayTeam)
+    {
+    }
+
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "USER_ID")
+    // public User getUser()
+    // {
+    // return this.user;
+    // }
+    //
+    // public void setUser(User aUser)
+    // {
+    // this.user = aUser;
+    // }
+
 }

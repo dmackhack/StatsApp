@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.dmack.statsapp.domain.GeneralUser;
+import org.dmack.statsapp.domain.Match;
 import org.dmack.statsapp.domain.Player;
 import org.dmack.statsapp.repository.Repository;
 import org.junit.After;
@@ -15,14 +16,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 /**
  * Parent for all unit tests
  * 
  * @author dmackenzie
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:applicationContext.xml", "classpath:**/AbstractUnitTest-context.xml" }, inheritLocations = true)
+@ContextConfiguration(locations =
+    {
+            "classpath:applicationContext.xml",
+            "classpath:**/AbstractUnitTest-context.xml"
+    }, inheritLocations = true)
 public abstract class AbstractUnitTest extends TestCase
 {
     private static final Log LOG = LogFactory.getLog(AbstractUnitTest.class);
@@ -35,7 +39,8 @@ public abstract class AbstractUnitTest extends TestCase
     protected Repository<GeneralUser> generalUserRepository;
     @Autowired
     protected Repository<Player> playerRepository;
-
+    @Autowired
+    protected Repository<Match> matchRepository;
 
     public AbstractUnitTest(String name)
     {

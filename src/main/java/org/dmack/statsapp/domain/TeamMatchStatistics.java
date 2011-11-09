@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "TEAM_MATCH_STATS")
@@ -22,6 +23,7 @@ public class TeamMatchStatistics extends DomainObject
 
     private Set<PlayerMatchStatistics> playerMatchStatistics = new LinkedHashSet<PlayerMatchStatistics>();
 
+    @XmlTransient
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MATCH_ID")
     public Match getMatch()

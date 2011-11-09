@@ -11,6 +11,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<!-- JPA entities must be registered here -->
+		<class>org.dmack.statsapp.domain.User</class>
 		<class>org.dmack.statsapp.domain.Player</class>
 		<class>org.dmack.statsapp.domain.GeneralUser</class>
 		<class>org.dmack.statsapp.domain.Club</class>

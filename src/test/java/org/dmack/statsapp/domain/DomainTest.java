@@ -46,6 +46,5 @@ public class DomainTest extends AbstractUnitTest
         }
         assertNotNull(rd1q1);
         assertEquals(5, rd1q1.getKicks());
-
     }
 }

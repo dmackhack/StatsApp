@@ -5,7 +5,13 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "SA_USER", uniqueConstraints = { @UniqueConstraint(columnNames = { "USERNAME" }) })
+@Table(name = "SA_USER", uniqueConstraints =
+    {
+        @UniqueConstraint(columnNames =
+            {
+                "USERNAME"
+            })
+    })
 public class GeneralUser extends User
 {
 

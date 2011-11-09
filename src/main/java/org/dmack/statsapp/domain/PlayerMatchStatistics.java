@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.dmack.statsapp.domain.Statistics.StatisticType;
 
@@ -29,7 +30,7 @@ public class PlayerMatchStatistics extends DomainObject
 
     private Map<Long, Statistics> statsByQuarter = new HashMap<Long, Statistics>();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PLAYER_ID")
     public Player getPlayer()
     {
@@ -59,6 +60,7 @@ public class PlayerMatchStatistics extends DomainObject
         this.statistics = aStatistics;
     }
 
+    @XmlTransient
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "TEAM_MATCH_STATS_ID")
     public TeamMatchStatistics getTeamMatchStatistics()

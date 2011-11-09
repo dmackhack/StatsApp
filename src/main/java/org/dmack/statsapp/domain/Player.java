@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "PLAYER", uniqueConstraints =
@@ -60,7 +61,8 @@ public class Player extends User
         this.clubs = aClubs;
     }
 
-    @OneToMany(mappedBy = "player", fetch = FetchType.LAZY)
+    @XmlTransient
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Set<PlayerMatchStatistics> getPlayerMatchStatics()
     {
         return this.playerMatchStatics;

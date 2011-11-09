@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
-	default-autowire="byName">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://cxf.apache.org/jaxws
+		http://cxf.apache.org/schemas/jaxws.xsd"
+		default-autowire="byName">
+		
+	<context:component-scan base-package="org.dmack.statsapp.services" />
 
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -63,5 +74,35 @@
         <constructor-arg
             value="org.dmack.statsapp.domain.Player" />
     </bean>
+	
+	<bean id="matchRepository"
+        class="org.dmack.statsapp.repository.GenericRepositoryJPAImpl">
+        <constructor-arg
+            value="org.dmack.statsapp.domain.Match" />
+    </bean>
+	
+	<!--
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter">
+    	<property name="baseAddress" value="http://localhost:9999/"/>
+	</bean>
+	-->
+	
+	<bean id="matchService"
+        class="org.dmack.statsapp.services.MatchServiceImpl">
+    </bean>
+	
+	<bean id="matchServiceEndpoint"
+        class="org.dmack.statsapp.services.MatchServiceEndpoint">
+    </bean>
+	
+	<jaxws:endpoint 
+	  id="matchServiceWS" 
+	  implementor="#matchServiceEndpoint"
+	  address="/matchservice" />
+	
+	<jaxws:client
+	  id="matchServiceClient" 
+	  serviceClass="org.dmack.statsapp.services.MatchService"
+	  address="http://localhost:8080/statsapp/services/matchservice" />
 
 </beans>
