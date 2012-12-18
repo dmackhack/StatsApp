@@ -334,7 +334,11 @@ public class DbUnitTestDataLoader implements TestDataLoader, InitializingBean, A
                         if (baselineSet != null)
                         {
                             ITable baselineTable = baselineSet.getTable(table);
-                            composedExpected = new CompositeTable(expectedTable.getTableMetaData(), new ITable[] { baselineTable, expectedTable });
+                            composedExpected = new CompositeTable(expectedTable.getTableMetaData(), new ITable[]
+                                {
+                                        baselineTable,
+                                        expectedTable
+                                });
                         }
                         ITable actualTable = new CompositeTable(expectedTable.getTableMetaData(), actualSet.getTable(table));
                         ITable sortedActual = null;
@@ -472,7 +476,12 @@ public class DbUnitTestDataLoader implements TestDataLoader, InitializingBean, A
 
     public static void main(String[] args) throws Exception
     {
-        ClassPathXmlApplicationContext xmlAppContext = new ClassPathXmlApplicationContext(new String[] { "classpath:applicationContext.xml", "classpath:**/AbstractUnitTest-context.xml" });
+        ClassPathXmlApplicationContext xmlAppContext = new ClassPathXmlApplicationContext(new String[]
+            {
+                    "classpath:applicationContext.xml",
+                    "classpath:applicationContext-outOfContainer.xml",
+                    "classpath:**/AbstractUnitTest-context.xml"
+            });
 
         DbUnitTestDataLoader dataLoader = (DbUnitTestDataLoader) xmlAppContext.getBean("testDataLoader");
         dataLoader.load("", "");

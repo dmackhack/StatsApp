@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations =
     {
             "classpath:applicationContext.xml",
+            "classpath:applicationContext-outOfContainer.xml",
             "classpath:**/AbstractUnitTest-context.xml"
     }, inheritLocations = true)
 public abstract class AbstractUnitTest extends TestCase

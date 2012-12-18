@@ -189,6 +189,18 @@
 		  <version>${cxf.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11gR2</version>
+			<!--<scope>test</scope> -->
+		</dependency>
+		
+		<dependency>
+			<groupId>org.htmlparser</groupId>
+			<artifactId>htmlparser</artifactId>
+			<version>2.1</version>
+		</dependency>
   </dependencies>
 
   <build>

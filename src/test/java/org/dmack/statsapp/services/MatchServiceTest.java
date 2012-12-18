@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(locations =
     {
             "classpath:applicationContext.xml",
+            "classpath:applicationContext-outOfContainer.xml",
             "classpath:**/AbstractUnitTest-context.xml",
             "classpath:**/*-context.xml"
     }, inheritLocations = true)

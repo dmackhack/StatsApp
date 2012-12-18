@@ -45,7 +45,7 @@ public class Match extends DomainObject
     }
 
     @Basic
-    @Column(name = "DATE")
+    @Column(name = "THE_DATE")
     public Date getDate()
     {
         return this.date;

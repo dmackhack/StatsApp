@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //endpointInterface = "org.apache.geronimo.samples.jws.Calculator",
 //targetNamespace = "http://jws.samples.geronimo.apache.org",
 //wsdlLocation = "WEB-INF/wsdl/CalculatorService.wsdl"
+//@Service(value = "matchServiceEndpoint")
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT, use = SOAPBinding.Use.LITERAL, parameterStyle = SOAPBinding.ParameterStyle.WRAPPED)
 public class MatchServiceEndpoint implements MatchService

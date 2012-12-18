@@ -18,9 +18,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TeamMatchStatistics extends DomainObject
 {
     private Match match;
-
     private Team team;
-
     private Set<PlayerMatchStatistics> playerMatchStatistics = new LinkedHashSet<PlayerMatchStatistics>();
 
     @XmlTransient

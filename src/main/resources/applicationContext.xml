@@ -15,15 +15,9 @@
 		default-autowire="byName">
 		
 	<context:component-scan base-package="org.dmack.statsapp.services" />
+	<context:annotation-config/>
 
-    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>file:///${user.home}/.statsapp/statsapp.local.application.properties</value>
-            </list>
-        </property>
-    </bean>
-
+    <context:property-placeholder location="file:///${user.home}/.statsapp/statsapp.local.application.properties"/>
     
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -33,35 +27,43 @@
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                <prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop>
+                <prop key="hibernate.default_batch_fetch_size">${hibernate.default_batch_fetch_size}</prop> 
             </props>
         </property>
 
         <property name="dataSource" ref="dataSource"/>
 	</bean>
-	
+
+	<!-- Out of Container DataSource
 	<bean id="rawDataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${hibernate.jdbc.driverClassName}" />
 		<property name="url" value="${hibernate.connection.url}" />
 		<property name="username" value="${hibernate.connection.username}" />
 		<property name="password" value="${hibernate.connection.password}" />
-	</bean>
+	</bean> -->
+	
+	<!-- In Container DataSource 
+	<bean id="rawDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="oracleDataSource"/>
+    </bean>
+    
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
 		<property name="targetDataSource" ref="rawDataSource" />
-	</bean>
+	</bean>-->
 
 	<!--
 		enable the configuration of transactional behavior based on
-		annotations
-	-->
+		annotations -->
+	
+	
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-
     
     <bean id="generalUserRepository"
         class="org.dmack.statsapp.repository.GenericRepositoryJPAImpl">
@@ -103,6 +105,6 @@
 	<jaxws:client
 	  id="matchServiceClient" 
 	  serviceClass="org.dmack.statsapp.services.MatchService"
-	  address="http://localhost:8080/statsapp/services/matchservice" />
+	  address="http://localhost:7002/statsapp/services/matchservice" />
 
 </beans>
