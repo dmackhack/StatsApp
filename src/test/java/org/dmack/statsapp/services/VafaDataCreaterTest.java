@@ -1,5 +1,6 @@
 package org.dmack.statsapp.services;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Map;
 
@@ -19,10 +20,10 @@ public class VafaDataCreaterTest extends TestCase
     }
 
     @Test
-    public void testCreateFixture() throws ParserException
+    public void testCreateFixture() throws ParserException, ParseException
     {
         VafaFixtureCreater creater = new VafaFixtureCreater();
-        creater.createFixture(FIXTURE_PATH);
+        creater.createFixture(FIXTURE_PATH, "2013");
     }
 
     @Test

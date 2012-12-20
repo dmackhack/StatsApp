@@ -1,9 +1,13 @@
 package org.dmack.statsapp.services;
 
+import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -18,7 +22,7 @@ public class VafaFixtureCreater
     private Map<String, String> teams = new HashMap<String, String>();
     private int divisionSequenceStart = 100;
 
-    public void createFixture(String path) throws ParserException
+    public void createFixture(String path, String season) throws ParserException, ParseException
     {
         Parser parser = new Parser(path);
         String season2013Id = "2";
@@ -34,13 +38,26 @@ public class VafaFixtureCreater
         Node roundNode = null;
         while (roundElements.hasMoreNodes())
         {
-            NodeFilter roundFilter = new TagNameFilter("H4");
             roundNode = roundElements.nextNode();
+
+            NodeFilter roundFilter = new TagNameFilter("H4");
             NodeList roundNodeList = roundNode.getChildren().extractAllNodesThatMatch(roundFilter, true);
             Node roundNodeHeading = roundNodeList.elementAt(0);
             String round = roundNodeHeading.getFirstChild().getText();
 
-            System.out.println("-- Round: " + round);
+            NodeFilter dateTimeFilter = new HasAttributeFilter("class", "match-time");
+            NodeList dateTimeNodeList = roundNode.getChildren().extractAllNodesThatMatch(dateTimeFilter, true);
+            Node dateTimeNode = dateTimeNodeList.elementAt(0);
+            String dateTime = dateTimeNode.getFirstChild().getText();
+            dateTime = StringUtils.replace(dateTime, "&nbsp;", " ");
+            dateTime = dateTime + " " + season;
+            // 2:00 PM / Sat 13 Apr
+            Date date = DateUtils.parseDate(dateTime, new String[]
+                {
+                    "hh:mm aa / EEE dd MMM yyyy",
+                });
+
+            System.out.println("-- Round: " + round + " Date/Time: " + date.toString());
 
             int roundId = divisionSequenceStart + Integer.valueOf(round);
 
@@ -48,7 +65,7 @@ public class VafaFixtureCreater
             macCal.set(2001, Calendar.JANUARY, 1, 0, 0);
             Calendar nowCal = Calendar.getInstance();
             nowCal.set(2013, Calendar.MAY, 20);
-            long seconds = (nowCal.getTimeInMillis() - macCal.getTimeInMillis()) / 1000;
+            long seconds = (date.getTime() - macCal.getTimeInMillis()) / 1000;
             StringBuffer roundSQL = new StringBuffer().append("insert into ZROUND (Z_PK, Z_ENT, Z_OPT, ZNUMBER, ZSEASON, ZDATE) values (").append(roundId).append(",11,1,").append(round).append(",")
                     .append(season2013Id).append(",").append(seconds).append(");");
 
