@@ -67,6 +67,11 @@ public class VafaPlayersCreater
 
             String[] playerNames = StringUtils.split(playerName);
 
+            String number = "";
+            if (playerNode.getParent().getParent().getChildren().elementAt(3).getFirstChild() != null)
+            {
+                number = playerNode.getParent().getParent().getChildren().elementAt(3).getFirstChild().getText();
+            }
             // insert into ZUSER (Z_PK, Z_ENT, Z_OPT, ZUSERID, ZGOALS, ZBEHINDS,
             // ZKICKS, ZTACKLES, ZHANDBALLS, ZMARKS, ZUSERNAME, ZLASTNAME,
             // ZFIRSTNAME) values
@@ -74,8 +79,16 @@ public class VafaPlayersCreater
             // 'David');
 
             int playerId = divisionSequenceStart + ++playerCount;
-            StringBuffer playerSQL = new StringBuffer().append("insert into ZUSER (Z_PK, Z_ENT, Z_OPT, ZUSERID, ZUSERNAME, ZPASSWORD, ZLASTNAME, ZFIRSTNAME) values (").append(playerId)
-                    .append(",16,1,").append(playerId).append(",'','','").append(playerNames[1]).append("', '").append(playerNames[0]).append("');");
+            StringBuffer playerSQL = new StringBuffer().append("insert into ZUSER (Z_PK, Z_ENT, Z_OPT, ZUSERID, ZUSERNAME, ZPASSWORD, ZLASTNAME, ZFIRSTNAME, ZNUMBER) values (").append(playerId)
+                    .append(",16,1,").append(playerId).append(",'','','").append(playerNames[1]).append("', '").append(playerNames[0]).append("'");
+
+            if (StringUtils.isEmpty(number))
+            {
+                number = "NULL";
+            }
+            playerSQL.append(",").append(number);
+            playerSQL.append(");");
+
             System.out.println(playerSQL.toString());
 
             // insert into ZPLAYERCLUB (Z_PK, Z_ENT, Z_OPT, ZACTIVE, ZCLUB,
