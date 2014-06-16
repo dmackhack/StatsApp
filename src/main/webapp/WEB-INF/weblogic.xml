@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/90"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.bea.com/ns/weblogic/90 http://www.bea.com/ns/weblogic/90/weblogic- web-app.xsd">
+	<session-descriptor></session-descriptor>
+	<jsp-descriptor></jsp-descriptor>
+	<context-root>/statsapp</context-root>
+	<container-descriptor>
+		<!-- <prefer-web-inf-classes>true</prefer-web-inf-classes> -->
+
+<!-- 
+		<xml>
+			<parser-factory>
+				<saxparser-factory>org.apache.xerces.jaxp.SAXParserFactoryImpl</saxparser-factory>
+				<document-builder-factory>org.apache.xerces.jaxp.DocumentBuilderFactoryImpl</document-builder-factory>
+				<transformer-factory>org.apache.xalan.processor.TransformerFactoryImpl</transformer-factory>
+			</parser-factory>
+		</xml>
+		<application-param>
+			<param-name>webapp.encoding.default</param-name>
+			<param-value>UTF-8</param-value>
+		</application-param>
+ -->
+ 
+		<prefer-application-packages>
+			<!--  
+			<package-name>org.w3c.*</package-name>
+			-->
+			<package-name>org.apache.*</package-name>
+			<package-name>org.springframework.*</package-name>
+			<package-name>org.hibernate.*</package-name>
+			<package-name>com.ibm.*</package-name>
+			
+			<package-name>javax.wsdl.*</package-name>
+			<!-- 
+			<package-name>javax.jws.*</package-name>
+			<package-name>javax.xml</package-name>
+			<package-name>com.sun.xml</package-name>
+			 -->
+			 
+			<package-name>antlr.*</package-name>
+			<package-name>org.apache.xerces.*</package-name>
+			<package-name>org.apache.xalan.*</package-name>
+			<package-name>org.apache.cxf.*</package-name>   
+    		<package-name>org.slf4j.*</package-name>  
+		</prefer-application-packages>
+
+	</container-descriptor>
+
+	<charset-params>
+		<input-charset>
+			<resource-path>/*</resource-path>
+			<java-charset-name>UTF-8</java-charset-name>
+		</input-charset>
+	</charset-params>
+
+	<component-factory-class-name>org.springframework.jee.interfaces.SpringComponentFactory
+	</component-factory-class-name>
+
+</weblogic-web-app>
