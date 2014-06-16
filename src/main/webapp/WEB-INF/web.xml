@@ -2,25 +2,31 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>statsapp</display-name>
 	
-	<!-- 
+	<!--     -->
 	<context-param>
         <param-name>contextConfigLocation</param-name>
+
         <param-value>classpath:applicationContext.xml, classpath:applicationContext-inContainer.xml</param-value>
     </context-param>
+    <!---->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener> 
 	
 	<listener>
     	<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
   	</listener>
 
+    <!--
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    	<listener-class>weblogic.spring.monitoring.WeblogicContextLoaderListener</listener-class>
     </listener>
-	 -->
+	  -->
 	 
 	 
 	 <!-- Open session in view -->
 	 
-	 <!-- 
+	 <!-- -->
     <filter>
         <filter-name>osiv</filter-name>
         <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
@@ -40,9 +46,19 @@
         <servlet-name>cxf</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
-     -->
+    
+    
+    <servlet>
+		<servlet-name>SLLClientServlet</servlet-name>
+		<servlet-class>org.dmack.statsapp.services.SSLClientServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SLLClientServlet</servlet-name>
+		<url-pattern>/sslclient</url-pattern>
+	</servlet-mapping> 
      
-     
+     <!-- 
     <servlet>
 		<servlet-name>LBServlet</servlet-name>
 		<servlet-class>org.dmack.statsapp.services.LB</servlet-class>
@@ -52,7 +68,7 @@
 		<servlet-name>LBServlet</servlet-name>
 		<url-pattern>/lb</url-pattern>
 	</servlet-mapping>
-	
+	 -->
 	<!--
 	<servlet>
     	<servlet-name>jaxws-servlet</servlet-name>
@@ -62,7 +78,7 @@
 		<servlet-name>jaxws-servlet</servlet-name>
 		<url-pattern>/matchservice</url-pattern>
 	</servlet-mapping>
-	
+	-->
 	<servlet>
 		<servlet-name>MatchService</servlet-name>
 		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSSpringServlet</servlet-class>
@@ -71,7 +87,8 @@
 	<servlet-mapping>
 		<servlet-name>MatchService</servlet-name>
 		<url-pattern>/matchservice</url-pattern>
-	</servlet-mapping-->
+	</servlet-mapping>
+
 	
     <session-config>
         <session-timeout>30</session-timeout>

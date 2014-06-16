@@ -1,67 +1,62 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.dmack.statsapp</groupId>
-  <artifactId>statsapp</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>org.dmack.statsapp</groupId>
+	<artifactId>statsapp</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
 
-  <name>StatsApp</name>
-  <url>http://www.statsapp.com.au</url>
+	<name>StatsApp</name>
+	<url>http://www.statsapp.com.au</url>
 
-  <dependencies>
+	<dependencies>
 
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
-      <scope>provided</scope>
-    </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
 
-    <dependency>
-      <groupId>javax.servlet.jsp</groupId>
-      <artifactId>jsp-api</artifactId>
-      <version>2.1</version>
-      <scope>provided</scope>
-    </dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
 
-    <dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>2.4.7</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.2.1</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		<!-- dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>1.8.2</version>
-			<scope>test</scope>
-		</dependency -->
-		
+
+		<!-- dependency> <groupId>org.mockito</groupId> <artifactId>mockito-core</artifactId> 
+			<version>1.8.2</version> <scope>test</scope> </dependency -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework.version}</version>
-			<scope>test</scope>
 		</dependency>
-	
-	<!-- Spring Deps -->
+
+		<!-- Spring Deps -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -93,17 +88,14 @@
 			<artifactId>spring-web</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
-		<!--dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency-->
+		<!--dependency> <groupId>org.springframework.ws</groupId> <artifactId>spring-ws</artifactId> 
+			<version>${org.springframework.version}</version> </dependency -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- JPA -->
 		<!-- Hibernate impl -->
 		<dependency>
@@ -117,20 +109,20 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.0.2.GA</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- Apache Deps -->
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -153,40 +145,64 @@
 			<version>1.2.14</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>${jaxws.version}</version>
-        </dependency>
-		
-        <dependency>
-          <groupId>com.sun.xml.ws</groupId>
-          <artifactId>jaxws-tools</artifactId>
-          <version>${jaxws.version}</version>
-        </dependency>
-		
+
+
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>${jaxws.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-tools</artifactId>
+			<version>${jaxws.version}</version>
+		</dependency>
+
 		<!-- Apache CXF dependencies -->
 		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-core</artifactId>
-		  <version>${cxf.version}</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-core</artifactId>
+			<version>${cxf.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-transports-http</artifactId>
-		  <version>${cxf.version}</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-bindings-soap</artifactId>
-		  <version>${cxf.version}</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-soap</artifactId>
+			<version>${cxf.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.cxf</groupId>
-		  <artifactId>cxf-rt-frontend-jaxws</artifactId>
-		  <version>${cxf.version}</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+			<scope>compile</scope>
+			<!-- 
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xmlbeans</artifactId>
+					<groupId>org.apache.xmlbeans</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xmlParserAPIs</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+			</exclusions>
+			 -->
 		</dependency>
 
 		<dependency>
@@ -195,88 +211,171 @@
 			<version>11gR2</version>
 			<!--<scope>test</scope> -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.htmlparser</groupId>
 			<artifactId>htmlparser</artifactId>
 			<version>2.1</version>
 		</dependency>
-  </dependencies>
+		<dependency>
+			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
+			<artifactId>jaxws-spring</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>weblogic</artifactId>
+			<version>10.3.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>wlthint3client</artifactId>
+			<version>10.3.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>cryptojFIPS</artifactId>
+			<version>10.3.6</version>
+			<scope>provided</scope>
+		</dependency>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.0.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+			<!-- 
+			 -->
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.stream</groupId>
+			<artifactId>stax-api</artifactId>
+			<version>1.0-2</version>
+			<!-- 
+			 -->
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>stax</groupId>
+			<artifactId>stax-api</artifactId>
+			<version>1.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.soap</groupId>
+			<artifactId>saaj-api</artifactId>
+			<version>1.3.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.messaging.saaj</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.3.8</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 
+		<dependency>
+			<artifactId>xercesImpl</artifactId>
+			<groupId>xerces</groupId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>xmlbeans</artifactId>
+			<groupId>org.apache.xmlbeans</groupId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<artifactId>xmlParserAPIs</artifactId>
+			<groupId>xerces</groupId>
+			<scope>provided</scope>
+		</dependency>
+ -->
+	</dependencies>
 
-<!--      
-	  <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxws-maven-plugin</artifactId>
-          <executions>
-            <execution>
-              <goals>
-                <goal>wsgen</goal>
-              </goals>
-              <configuration>
-	              <sei>org.dmack.statsapp.services.MatchServiceEndpoint</sei>
-	              <genWsdl>true</genWsdl>           
-	              <keep>true</keep>
-	              <verbose>true</verbose>
-              </configuration>
-            </execution>
-          </executions>
-      </plugin>
--->  
-	<plugin>
-	  <groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-java2ws-plugin</artifactId>
-		<version>${cxf.version}</version>
-		<dependencies>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-rt-frontend-jaxws</artifactId>
-				<version>${cxf.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-rt-frontend-simple</artifactId>
-				<version>${cxf.version}</version>
-			</dependency>
-		</dependencies>
-	
-		<executions>
-			<execution>
-				<id>process-classes</id>
-				<phase>process-classes</phase>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
 				<configuration>
-					<className>org.dmack.statsapp.services.MatchServiceEndpoint</className>
-					<genWsdl>true</genWsdl>
-					<verbose>true</verbose>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
-				<goals>
-					<goal>java2ws</goal>
-				</goals>
-			</execution>
-		</executions>
-		</plugin>
-    </plugins>
-	
-	<resources>
-		<resource>
-			<directory>src/main/resources/META-INF</directory>
-			<includes>
-				<include>persistence.xml</include>
-			</includes>
-			<targetPath>META-INF</targetPath>
-		</resource>
-		<resource>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>statsapp</warName>
+					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/main/webapp</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</resource>
+						<resource>
+							<directory>${basedir}/src/main/resources</directory>
+							<includes>
+								<include>META-INF/**/*.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxws-maven-plugin</artifactId> 
+				<executions> <execution> <goals> <goal>wsgen</goal> </goals> <configuration> 
+				<sei>org.dmack.statsapp.services.MatchServiceEndpoint</sei> <genWsdl>true</genWsdl> 
+				<keep>true</keep> <verbose>true</verbose> </configuration> </execution> </executions> 
+				</plugin> -->
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-java2ws-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-simple</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+
+				<executions>
+					<execution>
+						<id>process-classes</id>
+						<phase>process-classes</phase>
+						<configuration>
+							<className>org.dmack.statsapp.services.MatchServiceEndpoint</className>
+							<genWsdl>true</genWsdl>
+							<verbose>true</verbose>
+						</configuration>
+						<goals>
+							<goal>java2ws</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources/META-INF</directory>
+				<includes>
+					<include>persistence.xml</include>
+				</includes>
+				<targetPath>META-INF</targetPath>
+			</resource>
+			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*</include>
@@ -286,8 +385,8 @@
 					<exclude>META-INF/</exclude>
 				</excludes>
 			</resource>
-	</resources>
-	<testResources>
+		</resources>
+		<testResources>
 			<testResource>
 				<directory>src/test/java</directory>
 				<includes>
@@ -307,12 +406,12 @@
 				</excludes>
 			</testResource>
 		</testResources>
-	
-    <finalName>statsapp</finalName>
-  </build>
-  
-  <properties>
-  		<slf4j.version>1.5.11</slf4j.version>
+
+		<finalName>statsapp</finalName>
+	</build>
+
+	<properties>
+		<slf4j.version>1.5.11</slf4j.version>
 		<wicket.version>1.4.8</wicket.version>
 		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
 		<jaxws.version>2.2.3</jaxws.version>

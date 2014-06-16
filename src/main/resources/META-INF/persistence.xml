@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+      http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<!-- A JPA Persistence Unit -->
+	<persistence-unit name="StatsAppPersistence"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<!--
+		-->
+		<jta-data-source>jdbc/statsappDataSource</jta-data-source>
+		
+		<!-- JPA entities must be registered here -->
+		<class>org.dmack.statsapp.domain.User</class>
+		<class>org.dmack.statsapp.domain.Player</class>
+		<class>org.dmack.statsapp.domain.GeneralUser</class>
+		<class>org.dmack.statsapp.domain.Club</class>
+		<class>org.dmack.statsapp.domain.Match</class>
+		<class>org.dmack.statsapp.domain.Club</class>
+		<class>org.dmack.statsapp.domain.PlayerMatchStatistics</class>
+		<class>org.dmack.statsapp.domain.TeamMatchStatistics</class>
+		<class>org.dmack.statsapp.domain.Statistics</class>
+		<class>org.dmack.statsapp.domain.Team</class>
+
+		<!-- 
+		-->	
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+      		<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+            <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.jdbc.driverClassName" value="org.hsqldb.jdbcDriver" /> -->
+			<!-- <property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://192.168.57.1/statsappdb" />
+			<property name="hibernate.connection.username" value="sa" />
+			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.default_schema" value="" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.default_batch_fetch_size" value="50" /> -->
+			<!-- <property name="hibernate.connection.autocommit" value="false"/> 
+				<property name="hibernate.connection.release_mode" value="after_transaction"/> -->
+			
+		<!-- 		
+		 -->
+		</properties>
+
+	</persistence-unit>
+</persistence>

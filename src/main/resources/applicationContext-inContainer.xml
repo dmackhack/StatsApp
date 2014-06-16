@@ -29,7 +29,7 @@
     </bean>-->
     
     <bean id="rawDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="jdbc/oracleDataSource"/>
+        <property name="jndiName" value="jdbc/statsappDataSource"/>
     </bean>
 
 

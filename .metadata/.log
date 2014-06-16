@@ -11,3 +11,16 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.core.net 1 0 2012-09-13 08:43:47.298
 !MESSAGE System property http.proxyPort is not set but should be 8080.
+!SESSION 2013-06-10 21:25:42.388 -----------------------------------------------
+eclipse.buildId=M20110210-1200
+java.version=1.6.0_25
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.net 1 0 2013-06-10 21:26:08.564
+!MESSAGE System property http.proxyHost is not set but should be 152.147.128.32.
+
+!ENTRY org.eclipse.core.net 1 0 2013-06-10 21:26:08.565
+!MESSAGE System property http.proxyPort is not set but should be 8080.

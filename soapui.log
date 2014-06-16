@@ -1,36 +1,26 @@
-2012-03-06 23:15:46,524 INFO  [DefaultSoapUICore] initialized soapui-settings from [/usr/share/soapui/soapui-3.6.1/soapui-settings.xml]
-2012-03-06 23:15:47,479 INFO  [WorkspaceImpl] Loading workspace from [/home/dmackenzie/Projects/StatsApp/statsapp/../../TestPBE-workspace.xml]
-2012-03-06 23:15:47,560 INFO  [WsdlProject] Loaded project from [file:/home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService-soapui-project.xml]
-2012-03-06 23:15:47,750 INFO  [SoapUI] File [/home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService2-soapui-project.xml] does not exist, trying URL instead
-2012-03-06 23:15:47,751 ERROR [SoapUI] An error occured [no protocol: /home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService2-soapui-project.xml], see error log for details
-2012-03-06 23:15:47,751 ERROR [errorlog] java.net.MalformedURLException: no protocol: /home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService2-soapui-project.xml
-java.net.MalformedURLException: no protocol: /home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService2-soapui-project.xml
-	at java.net.URL.<init>(URL.java:567)
-	at java.net.URL.<init>(URL.java:464)
-	at java.net.URL.<init>(URL.java:413)
-	at com.eviware.soapui.impl.wsdl.WsdlProject.<init>(WsdlProject.java:226)
-	at com.eviware.soapui.impl.wsdl.WsdlProjectFactory.createNew(WsdlProjectFactory.java:62)
-	at com.eviware.soapui.impl.wsdl.WsdlProjectFactory.createNew(WsdlProjectFactory.java:24)
-	at com.eviware.soapui.impl.WorkspaceImpl.loadWorkspace(WorkspaceImpl.java:175)
-	at com.eviware.soapui.impl.WorkspaceImpl.<init>(WorkspaceImpl.java:87)
-	at com.eviware.soapui.impl.WorkspaceFactoryImpl.openWorkspace(WorkspaceFactoryImpl.java:32)
-	at com.eviware.soapui.SoapUI.startSoapUI(SoapUI.java:770)
-	at com.eviware.soapui.SoapUI$SoapUIRunner.run(SoapUI.java:624)
-	at com.eviware.soapui.SoapUI.main(SoapUI.java:720)
-2012-03-06 23:15:47,833 INFO  [SoapUI] Used java version: 1.6.0_25
-2012-03-06 23:15:55,868 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xop.xsd with targetNamespace http://www.w3.org/2004/08/xop/include
-2012-03-06 23:15:55,919 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/XMLSchema.xsd with targetNamespace http://www.w3.org/2001/XMLSchema
-2012-03-06 23:15:55,920 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xml.xsd with targetNamespace http://www.w3.org/XML/1998/namespace
-2012-03-06 23:15:55,921 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/swaref.xsd with targetNamespace http://ws-i.org/profiles/basic/1.1/xsd
-2012-03-06 23:15:55,921 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200505.xsd with targetNamespace http://www.w3.org/2005/05/xmlmime
-2012-03-06 23:15:55,922 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200411.xsd with targetNamespace http://www.w3.org/2004/11/xmlmime
-2012-03-06 23:15:55,924 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope.xsd with targetNamespace http://schemas.xmlsoap.org/soap/envelope/
-2012-03-06 23:15:55,929 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding.xsd with targetNamespace http://schemas.xmlsoap.org/soap/encoding/
-2012-03-06 23:15:55,931 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope12.xsd with targetNamespace http://www.w3.org/2003/05/soap-envelope
-2012-03-06 23:15:55,937 INFO  [SchemaUtils] Added default schema from file:/usr/share/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding12.xsd with targetNamespace http://www.w3.org/2003/05/soap-encoding
-2012-03-06 23:15:55,938 INFO  [SchemaUtils] Loading schema types from [http://localhost:8080/statsapp/services/matchservice?wsdl]
-2012-03-06 23:15:55,938 INFO  [SchemaUtils] Getting schema http://localhost:8080/statsapp/services/matchservice?wsdl
-2012-03-06 23:16:43,570 INFO  [AbstractHttpRequestDesktopPanel] Got response for [MatchServiceEndpointServiceSoapBinding.getMatch:Request 1] in 63ms (2585 bytes)
-2012-03-06 23:16:55,280 INFO  [DefaultSoapUICore] Settings saved to [/usr/share/soapui/soapui-3.6.1/soapui-settings.xml]
-2012-03-06 23:16:55,291 INFO  [WsdlProject] Saved project [MatchService] to [/home/dmackenzie/Projects/StatsApp/statsapp/src/main/soapui/MatchService-soapui-project.xml - 18822 bytes
-2012-03-06 23:16:55,303 INFO  [WorkspaceImpl] Saved workspace to [/home/dmackenzie/Projects/StatsApp/statsapp/../../TestPBE-workspace.xml]
+2014-06-16 08:54:28,452 INFO  [DefaultSoapUICore] initialized soapui-settings from [/home/dmackenzie/soapui-settings.xml]
+2014-06-16 08:54:29,546 INFO  [WorkspaceImpl] Loading workspace from [/home/dmackenzie/default-soapui-workspace.xml]
+2014-06-16 08:54:29,688 INFO  [SoapUI] Used java version: 1.6.0_45
+2014-06-16 08:57:55,621 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xop.xsd with targetNamespace http://www.w3.org/2004/08/xop/include
+2014-06-16 08:57:55,689 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/XMLSchema.xsd with targetNamespace http://www.w3.org/2001/XMLSchema
+2014-06-16 08:57:55,690 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xml.xsd with targetNamespace http://www.w3.org/XML/1998/namespace
+2014-06-16 08:57:55,691 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/swaref.xsd with targetNamespace http://ws-i.org/profiles/basic/1.1/xsd
+2014-06-16 08:57:55,692 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200505.xsd with targetNamespace http://www.w3.org/2005/05/xmlmime
+2014-06-16 08:57:55,693 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200411.xsd with targetNamespace http://www.w3.org/2004/11/xmlmime
+2014-06-16 08:57:55,696 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope.xsd with targetNamespace http://schemas.xmlsoap.org/soap/envelope/
+2014-06-16 08:57:55,704 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding.xsd with targetNamespace http://schemas.xmlsoap.org/soap/encoding/
+2014-06-16 08:57:55,707 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope12.xsd with targetNamespace http://www.w3.org/2003/05/soap-envelope
+2014-06-16 08:57:55,715 INFO  [SchemaUtils] Added default schema from file:/home/dmackenzie/Downloads/soapui/soapui-3.6.1/bin/soapui-3.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding12.xsd with targetNamespace http://www.w3.org/2003/05/soap-encoding
+2014-06-16 08:57:56,177 INFO  [SchemaUtils] Loading schema types from [http://dmackapps:7403/statsapp/services/matchservice?wsdl]
+2014-06-16 08:57:56,177 INFO  [SchemaUtils] Getting schema http://dmackapps:7403/statsapp/services/matchservice?wsdl
+2014-06-16 08:57:56,594 INFO  [WsdlImporter] Finding importer for {http://services.statsapp.dmack.org/}MatchServiceEndpointServiceSoapBinding
+2014-06-16 08:57:56,599 INFO  [WsdlImporter] Importing binding {http://services.statsapp.dmack.org/}MatchServiceEndpointServiceSoapBinding
+2014-06-16 08:57:56,631 INFO  [Soap11HttpBindingImporter] importing endpoint http://dmackapps:7403/statsapp/services/matchservice
+2014-06-16 08:57:56,678 INFO  [Soap11HttpBindingImporter] importing operation add
+2014-06-16 08:57:56,697 INFO  [Soap11HttpBindingImporter] importing operation createAddress
+2014-06-16 08:57:56,698 INFO  [Soap11HttpBindingImporter] importing operation createMatch
+2014-06-16 08:57:56,699 INFO  [Soap11HttpBindingImporter] importing operation getCity
+2014-06-16 08:57:56,700 INFO  [Soap11HttpBindingImporter] importing operation getMatch
+2014-06-16 08:58:18,255 INFO  [AbstractHttpRequestDesktopPanel] Got response for [MatchServiceEndpointServiceSoapBinding.add:Request 1] in 245ms (210 bytes)
+2014-06-16 08:58:31,671 INFO  [AbstractHttpRequestDesktopPanel] Got response for [MatchServiceEndpointServiceSoapBinding.getMatch:Request 1] in 340ms (267 bytes)
+2014-06-16 18:56:25,361 INFO  [AbstractHttpRequestDesktopPanel] Got response for [MatchServiceEndpointServiceSoapBinding.getMatch:Request 1] in 320ms (2585 bytes)

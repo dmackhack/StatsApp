@@ -14,10 +14,12 @@
 		http://cxf.apache.org/schemas/jaxws.xsd"
 		default-autowire="byName">
 		
+    <!-- <context:property-placeholder location="file:///${user.home}/.statsapp/statsapp.local.application.properties"/> -->
+    <context:property-placeholder location="classpath:/statsapp.local.application.properties"/>
+    <!-- <context:property-placeholder location="file:///home/oracle/.statsapp/statsapp.local.application.properties"/> -->
+		
 	<context:component-scan base-package="org.dmack.statsapp.services" />
 	<context:annotation-config/>
-
-    <context:property-placeholder location="file:///${user.home}/.statsapp/statsapp.local.application.properties"/>
     
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -105,6 +107,6 @@
 	<jaxws:client
 	  id="matchServiceClient" 
 	  serviceClass="org.dmack.statsapp.services.MatchService"
-	  address="http://localhost:7002/statsapp/services/matchservice" />
+	  address="http://dmackapps:7403/statsapp/services/matchservice" />
 
 </beans>
